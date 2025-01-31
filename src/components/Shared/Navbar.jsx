@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div className='w-screen'>
-        <div className={`fixed w-[85%] md:w-[90%] lg:w-3/4 xl:w-3/5 bg-white md:bg-third/80 border-black border-2 mt-5 z-50 right-0 left-0 mx-auto rounded-3xl md:backdrop-blur-md duration-300 shadow-md overflow-hidden ${navbar ? 'h-[400px]' : 'h-[80px]'}`}>
+        <div className={`fixed w-[85%] md:w-[90%] lg:w-3/4 xl:w-3/5 bg-white lg:bg-third/80 border-black border-2 mt-5 z-50 right-0 left-0 mx-auto rounded-3xl lg:backdrop-blur-md duration-300 shadow-md overflow-hidden ${navbar ? 'h-[400px]' : 'h-[80px]'}`}>
             <div className='w-full h-[80px] flex items-center justify-between'>
                 <div className='h-full p-1'>
                     <img className='py-4 sm:p-3 md:p-0 h-full cursor-pointer' src={logo} alt="" /> 
@@ -82,7 +82,7 @@ const Navbar = () => {
 
         {/* searchbar */}
         {search && (
-            <div className='fixed z-50 flex items-center bg-white/40 backdrop-blur-md w-[95%] md:w-[90%] h-[50px] rounded-2xl lg:w-3/4 xl:w-3/5 shadow-md mx-auto right-0 left-0 top-[12%] translate-y-4 transform float-up'>
+            <div className='fixed z-50 flex items-center bg-white/40  w-[95%] md:w-[90%] h-[50px] rounded-2xl lg:w-3/4 xl:w-3/5 shadow-md mx-auto right-0 left-0 top-[12%] translate-y-4 transform float-up'>
                 <input type="text" placeholder='Search an item...' className='w-[90%] h-full rounded-l-2xl pl-4 border-r-0 border-2 bg-white/60 text-black' />
                 <button className='border-2 h-full w-[10%] rounded-r-2xl bg-third/60 hover:bg-amber duration-200 hover:text-white hover:border-black'>Search</button>
             </div>

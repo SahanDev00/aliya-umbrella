@@ -34,14 +34,14 @@ const Hero = () => {
                       <img
                         src={image.src}
                         alt={`Slide ${index + 1}`}
-                        className="w-full h-full object-cover rounded-xl md:rounded-none md:rounded-l-xl opacity-60"
+                        className="w-full h-screen object-cover rounded-xl md:rounded-none md:rounded-l-xl opacity-60"
                       />
                     </div>
                   ))}
                 </Slider>
-                <div className='absolute m-auto inset-0 w-full h-full flex flex-col items-center justify-center'>
-                    <h1 className='text-4xl text-center w-[80%] text-third uppercase'>Where Elegance Meets Functionality – Premium Umbrellas, Crafted to Perfection.</h1>
-                    <button className='border bg-fourth text-black hover:bg-amber/80 text-lg py-2 px-7 rounded-full hover:text-white duration-200 mt-6 border-black uppercase'>Experience the Art of Shelter</button>
+                <div className='absolute m-auto inset-0 w-full h-full flex flex-col items-center justify-center z-30'>
+                    <h1 className='text-2xl sm:text-3xl md:text-4xl text-center w-[80%] text-third uppercase'>Where Elegance Meets Functionality – Premium Umbrellas, Crafted to Perfection.</h1>
+                    <button className='border bg-fourth text-black hover:bg-amber/80 text-[15px] md:text-lg py-2 px-7 rounded-full hover:text-white duration-200 mt-6 border-black uppercase'>Experience the Art of Shelter</button>
                 </div>
             </div>
         </div>
