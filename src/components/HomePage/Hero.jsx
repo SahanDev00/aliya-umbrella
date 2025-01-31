@@ -7,12 +7,12 @@ const Hero = () => {
   const sliderSettings = {
     dots: false,
     infinite: true,
-    speed: 3000,
+    speed: 1800,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     pauseOnHover: false,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 4000,
     arrows: false,
     fade: true, // For smooth fading effect
   };

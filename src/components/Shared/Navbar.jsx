@@ -3,11 +3,13 @@ import logo from '../../assets/bigLogo.png'
 import { LuUser } from 'react-icons/lu'
 import { IoClose, IoMenu, IoSearch } from 'react-icons/io5'
 import { GrCart } from 'react-icons/gr'
+import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
 
     const [navbar, setNavbar] = useState(false);
     const [search, setSearch] = useState(false);
+    const location = useLocation();
 
     const toggleNavbar = () => {
         setNavbar(!navbar);
@@ -16,6 +18,10 @@ const Navbar = () => {
     const toggleSearchbar = () => {
         setSearch(!search);
     };
+
+    const isActive = (path) => {
+        return location.pathname === path;
+      };
 
   return (
     <div className='w-screen'>
@@ -27,20 +33,28 @@ const Navbar = () => {
                 <div className='h-full hidden sm:block'>
                     <ul className='flex h-full items-center gap-5 text-sm md:text-lg uppercase font-medium'>
                         <div className='group'>
-                            <li className='cursor-pointer hover:text-amber'>Home</li>
-                            <div className='w-0 group-hover:w-full h-[2px] bg-black duration-300 group-hover:bg-fourth'/>
+                            <Link to='/'>
+                                <li className={`cursor-pointer hover:text-amber ${isActive('/') ? 'text-amber' : ''}`}>Home</li>
+                                <div className={`w-0 group-hover:w-full h-[2px] duration-300 group-hover:bg-fourth ${isActive('/') ? 'w-full bg-amber' : 'bg-black '}`}/>
+                            </Link>
                         </div>
                         <div className='group'>
-                            <li className='cursor-pointer hover:text-amber'>Store</li>
-                            <div className='w-0 group-hover:w-full h-[2px] bg-black duration-300 group-hover:bg-fourth'/>
+                            <Link to='/products'>
+                                <li className={`cursor-pointer hover:text-amber ${isActive('/products') || isActive('/collection') ? 'text-amber' : ''}`}>Store</li>
+                                <div className={`w-0 group-hover:w-full h-[2px] duration-300 group-hover:bg-fourth ${isActive('/products') || isActive('/collection') ? 'w-full bg-amber' : 'bg-black '}`}/>
+                            </Link>
                         </div>
                         <div className='group'>
-                            <li className='cursor-pointer hover:text-amber'>About</li>
-                            <div className='w-0 group-hover:w-full h-[2px] bg-black duration-300 group-hover:bg-fourth'/>
+                            <Link to='/about'>
+                                <li className={`cursor-pointer hover:text-amber ${isActive('/about') ? 'text-amber' : ''}`}>About</li>
+                                <div className={`w-0 group-hover:w-full h-[2px] duration-300 group-hover:bg-fourth ${isActive('/about') ? 'w-full bg-amber' : 'bg-black '}`}/>
+                            </Link>
                         </div>
                         <div className='group'>
-                            <li className='cursor-pointer hover:text-amber'>Contact</li>
-                            <div className='w-0 group-hover:w-full h-[2px] bg-black duration-300 group-hover:bg-fourth'/>
+                            <Link to='/contact'>
+                                <li className={`cursor-pointer hover:text-amber ${isActive('/contact') ? 'text-amber' : ''}`}>Contact</li>
+                                <div className={`w-0 group-hover:w-full h-[2px] duration-300 group-hover:bg-fourth ${isActive('/contact') ? 'w-full bg-amber' : 'bg-black '}`}/>
+                            </Link>
                         </div>
                     </ul>
                 </div>
@@ -61,20 +75,28 @@ const Navbar = () => {
             <div className='sm:hidden w-full h-full mt-10'>
                 <ul className='h-full w-full space-y-5 text-lg uppercase font-medium inset-0 text-center'>
                     <div className='group'>
-                        <li className='cursor-pointer hover:text-amber'>Home</li>
-                        <div className='w-0 group-hover:w-full h-[2px] bg-black duration-300 group-hover:bg-fourth'/>
+                        <Link to='/'>
+                            <li className={`cursor-pointer hover:text-amber ${isActive('/') ? 'text-amber' : ''}`}>Home</li>
+                            <div className={`w-0 group-hover:w-[100px] mx-auto h-[2px] duration-300 group-hover:bg-fourth ${isActive('/') ? 'w-full bg-amber' : 'bg-black '}`}/>
+                        </Link>
                     </div>
                     <div className='group'>
-                        <li className='cursor-pointer hover:text-amber'>Store</li>
-                        <div className='w-0 group-hover:w-full h-[2px] bg-black duration-300 group-hover:bg-fourth'/>
+                        <Link to='/products'>
+                            <li className={`cursor-pointer hover:text-amber ${isActive('/products') || isActive('/collection') ? 'text-amber' : ''}`}>Store</li>
+                            <div className={`w-0 group-hover:w-[100px] mx-auto h-[2px] duration-300 group-hover:bg-fourth ${isActive('/products') || isActive('/collection') ? 'w-full bg-amber' : 'bg-black '}`}/>
+                        </Link>
                     </div>
                     <div className='group'>
-                        <li className='cursor-pointer hover:text-amber'>About</li>
-                        <div className='w-0 group-hover:w-full h-[2px] bg-black duration-300 group-hover:bg-fourth'/>
+                        <Link to='/about'>
+                            <li className={`cursor-pointer hover:text-amber ${isActive('/about') ? 'text-amber' : ''}`}>About</li>
+                            <div className={`w-0 group-hover:w-[100px] mx-auto h-[2px] duration-300 group-hover:bg-fourth ${isActive('/about') ? 'w-full bg-amber' : 'bg-black '}`}/>
+                        </Link>
                     </div>
                     <div className='group'>
-                        <li className='cursor-pointer hover:text-amber'>Contact</li>
-                        <div className='w-0 group-hover:w-full h-[2px] bg-black duration-300 group-hover:bg-fourth'/>
+                        <Link to='/contact'>
+                            <li className={`cursor-pointer hover:text-amber ${isActive('/contact') ? 'text-amber' : ''}`}>Contact</li>
+                            <div className={`w-0 group-hover:w-[100px] mx-auto h-[2px] duration-300 group-hover:bg-fourth ${isActive('/contact') ? 'w-full bg-amber' : 'bg-black '}`}/>
+                        </Link>
                     </div>
                 </ul>
             </div>
