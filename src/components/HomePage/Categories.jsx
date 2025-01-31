@@ -11,7 +11,7 @@ const Categories = () => {
     <div className='w-full mt-16 pb-10'>
         <div className='w-[90%]  md:h-[500px] lg:h-[700px] mx-auto'>
             <h1 className='text-2xl md:text-4xl text-center uppercase font-thin'>Our products are vary and stunning</h1>
-            <div className='w-[90px] h-[1px] mx-auto bg-black mt-2  mb-6'/>
+            <div className='w-[90px] h-[1px] mx-auto bg-black mt-2 mb-6'/>
             <div className='w-full sm:flex gap-4'>
                 <div className='w-full lg:w-2/3 xl:w-3/5 h-[150px] sm:h-[200px] lg:h-[300px] relative group hover:w-4/5 rounded-xl border duration-300 cursor-pointer'>
                     <img src={colourfulPic} className='w-full h-full object-cover rounded-xl' alt="" />

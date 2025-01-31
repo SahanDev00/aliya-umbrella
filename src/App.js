@@ -1,15 +1,13 @@
-import Categories from "./components/HomePage/Categories";
-import Hero from "./components/HomePage/Hero";
-import SampleItems from "./components/HomePage/SampleItems";
+import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Shared/Navbar";
+import Home from "./Pages/Home";
 
 function App() {
   return (
     <div className="bg-third/50">
       <Navbar/>
-      <Hero />
-      <Categories/>
-      <SampleItems/>
+      <Home/>
+      <Footer/>
     </div>
   );
 }

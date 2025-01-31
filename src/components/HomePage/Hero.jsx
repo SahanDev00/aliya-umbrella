@@ -41,7 +41,7 @@ const Hero = () => {
                 </Slider>
                 <div className='absolute m-auto inset-0 w-full h-full flex flex-col items-center justify-center'>
                     <h1 className='text-4xl text-center w-[80%] text-third uppercase'>Where Elegance Meets Functionality – Premium Umbrellas, Crafted to Perfection.</h1>
-                    <button className='border bg-third/80 text-black hover:bg-amber/80 text-lg py-2 px-7 rounded-full hover:text-white duration-200 mt-6 border-black uppercase'>Experience the Art of Shelter</button>
+                    <button className='border bg-fourth text-black hover:bg-amber/80 text-lg py-2 px-7 rounded-full hover:text-white duration-200 mt-6 border-black uppercase'>Experience the Art of Shelter</button>
                 </div>
             </div>
         </div>
