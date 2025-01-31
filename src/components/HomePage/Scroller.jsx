@@ -73,7 +73,7 @@ const Scroller = () => {
                 <div className='w-full lg:h-[250px] xl:h-[300px] 2xl:h-[400px] p-2 cursor-grab active:cursor-grabbing relative group'>
                     <img src={product.image} className='w-full h-[250px] lg:h-[250px] xl:h-[300px] 2xl:h-[400px] object-contain' alt="" />
                     <div className='absolute inset-0 w-full h-full flex items-center opacity-0 group-hover:opacity-100 duration-300'>
-                        <button className='border border-black/60 bg-fourth/50 w-[100px] h-[30px] mx-auto text-black/80 absolute bottom-5 right-0 left-0'>View Item</button>
+                        <button className='border border-black/60 bg-fourth/50 w-[100px] h-[30px] mx-auto text-black/80 absolute bottom-5 right-0 left-0 font-karla'>View Item</button>
                     </div>
                 </div>
             ))}

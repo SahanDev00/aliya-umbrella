@@ -48,15 +48,15 @@ const Reviews = () => {
 
   return (
     <div className='w-full h-full bg-white py-5 mt-10'>
-        <h1 className='text-4xl text-center uppercase font-thin mt-5'>See what our customers say about us!</h1>
+        <h1 className='text-4xl text-center uppercase font-thin mt-5 font-karla'>See what our customers say about us!</h1>
         <div className='w-[90px] h-[1px] mx-auto bg-black mt-2 mb-6'/>
         <div className='w-[95%] sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto h-full grid grid-cols-1 sm:grid-cols-2 mt-5'>
             <div className='w-full h-full sm:flex flex-col items-center justify-center hidden'>
                 <FaHandHoldingHeart className='size-20 text-amber' />
-                <h1 className='my-4 text-2xl font-bold'>FOLLOW US</h1>
-                <button className='my-1 px-3 md:px-5 py-1 border hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Instagram <span className='font-semibold'>@example_instagram</span></button>
-                <button className='my-1 px-3 md:px-5 py-1 border hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Facebook <span className='font-semibold'>@example_facebook</span></button>
-                <button className='my-1 px-3 md:px-5 py-1 border hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on TikTok <span className='font-semibold'>@example_tiktok</span></button>
+                <h1 className='my-4 text-2xl font-bold font-overpass'>FOLLOW US</h1>
+                <button className='my-1 px-3 md:px-5 py-1 font-roboto border hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Instagram <span className='font-semibold'>@example_instagram</span></button>
+                <button className='my-1 px-3 md:px-5 py-1 font-roboto border hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Facebook <span className='font-semibold'>@example_facebook</span></button>
+                <button className='my-1 px-3 md:px-5 py-1 font-roboto border hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on TikTok <span className='font-semibold'>@example_tiktok</span></button>
             </div>
             <div className='w-full h-full py-5'>
                 <div className='w-full h-full grid grid-cols-2 gap-3'>
@@ -64,7 +64,7 @@ const Reviews = () => {
                         <div key={id} className='w-full rounded-xl relative group overflow-hidden group'>
                             <img src={image.img} className='rounded-xl h-full w-full object-cover' alt="" />
                             <div className='w-full h-full flex sm:hidden absolute inset-0 mx-auto lg:flex items-center justify-center bg-black/60 group-hover:left-0 left-96 duration-300 cursor-pointer'>
-                                <p className='text-white text-center text-[10px] sm:text-sm xl:text-[15px]'>{image.review}</p>
+                                <p className='text-white text-center text-[10px] sm:text-sm xl:text-[15px] font-poppins w-[95%]'>{image.review}</p>
                             </div>
                         </div>
                     ))}
@@ -72,10 +72,10 @@ const Reviews = () => {
             </div>
             <div className='w-full h-full flex flex-col items-center justify-center sm:hidden mt-5'>
                 <FaHandHoldingHeart className='size-16 text-amber' />
-                <h1 className='my-4 text-2xl font-bold'>FOLLOW US</h1>
-                <button className='my-1 px-3 md:px-5 py-1 border hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Instagram <span className='font-semibold'>@example_instagram</span></button>
-                <button className='my-1 px-3 md:px-5 py-1 border hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Facebook <span className='font-semibold'>@example_facebook</span></button>
-                <button className='my-1 px-3 md:px-5 py-1 border hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on TikTok <span className='font-semibold'>@example_tiktok</span></button>
+                <h1 className='my-4 text-2xl font-bold font-overpass'>FOLLOW US</h1>
+                <button className='my-1 px-3 md:px-5 py-1 border font-roboto hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Instagram <span className='font-semibold'>@example_instagram</span></button>
+                <button className='my-1 px-3 md:px-5 py-1 border font-roboto hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Facebook <span className='font-semibold'>@example_facebook</span></button>
+                <button className='my-1 px-3 md:px-5 py-1 border font-roboto hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on TikTok <span className='font-semibold'>@example_tiktok</span></button>
             </div>
         </div>
     </div>

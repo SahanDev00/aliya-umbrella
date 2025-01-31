@@ -8,7 +8,7 @@ const Footer = () => {
         {/* About Us Section */}
         <div className='mb-8 md:mb-0 w-full md:w-[50%]'>
           <h2 className='text-xl font-bold text-gray-700 mb-4 font-roboto'>About Us</h2>
-          <p className='text-gray-600 md:w-[70%]'>
+          <p className='text-black/80 md:w-[70%] font-poppins text-sm'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente pariatur recusandae esse vel repellat voluptatibus vitae voluptatum dolores deleniti ex. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga quam delectus expedita porro adipisci veniam consequuntur doloremque natus, dolor molestias!
           </p>
         </div>
@@ -41,10 +41,10 @@ const Footer = () => {
         <div className=''>
           <h2 className='text-xl font-bold text-gray-700 mb-4 font-roboto'>Follow Us</h2>
           <div className='flex space-x-4'>
-            <a href='/' className='text-gray-600 hover:text-gray-800'><FaFacebookF /></a>
-            <a href='/' className='text-gray-600 hover:text-gray-800'><FaTwitter /></a>
-            <a href='/' className='text-gray-600 hover:text-gray-800'><FaInstagram /></a>
-            <a href='/' className='text-gray-600 hover:text-gray-800'><FaLinkedinIn /></a>
+            <a href='/' className='text-black/80'><FaFacebookF /></a>
+            <a href='/' className='text-black/80'><FaTwitter /></a>
+            <a href='/' className='text-black/80'><FaInstagram /></a>
+            <a href='/' className='text-black/80'><FaLinkedinIn /></a>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className='border-t border-gray-300 mt-8 pt-4'>
         <p className='text-center text-gray-600 text-sm font-karla'>
-          © 2025 Aliya Umbrella. All rights reserved.
+          © 2025 Aliya - Umbrella. All rights reserved.
         </p>
       </div>
     </div>

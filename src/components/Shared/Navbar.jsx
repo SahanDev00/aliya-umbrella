@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div className='w-screen'>
-        <div className={`fixed w-[85%] md:w-[90%] lg:w-3/4 xl:w-3/5 bg-white lg:bg-third/80 border-black border-2 mt-5 z-50 right-0 left-0 mx-auto rounded-3xl lg:backdrop-blur-md duration-300 shadow-md overflow-hidden ${navbar ? 'h-[400px]' : 'h-[80px]'}`}>
+        <div className={`fixed w-[85%] md:w-[90%] lg:w-3/4 xl:w-3/5 bg-white font-overpass lg:bg-third/80 border-black border-2 mt-5 z-50 right-0 left-0 mx-auto rounded-3xl lg:backdrop-blur-md duration-300 shadow-md overflow-hidden ${navbar ? 'h-[400px]' : 'h-[80px]'}`}>
             <div className='w-full h-[80px] flex items-center justify-between'>
                 <div className='h-full p-1'>
                     <img className='py-4 sm:p-3 md:p-0 h-full cursor-pointer' src={logo} alt="" /> 

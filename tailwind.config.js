@@ -13,6 +13,13 @@ module.exports = {
       white: '#ffffff',
       amber: '#d97706',
     },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+      mono: ["Share Tech Mono", "monospace"],
+      roboto: ["Roboto", "sans-serif"],
+      karla: ["Karla", "sans-serif"],
+      overpass: ["Overpass", "sans-serif"]
+    },
     extend: {},
   },
   plugins: [],
