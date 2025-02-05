@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Hero from '../components/HomePage/Hero'
 import Categories from '../components/HomePage/Categories'
 import SampleItems from '../components/HomePage/SampleItems'
@@ -9,6 +9,11 @@ import BuyNow from '../components/HomePage/BuyNow'
 
 
 const Home = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
         <Hero />

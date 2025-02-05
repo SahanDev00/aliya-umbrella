@@ -39,7 +39,7 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className='group'>
-                            <Link to='/collection'>
+                            <Link to='/products'>
                                 <li className={`cursor-pointer hover:text-amber ${isActive('/products') || isActive('/collection') ? 'text-amber' : ''}`}>Store</li>
                                 <div className={`w-0 group-hover:w-full h-[2px] duration-300 group-hover:bg-fourth ${isActive('/products') || isActive('/collection') ? 'w-full bg-amber' : 'bg-black '}`}/>
                             </Link>
@@ -85,7 +85,7 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className='group'>
-                        <Link to='/collection'>
+                        <Link to='/products'>
                             <li className={`cursor-pointer hover:text-amber ${isActive('/products') || isActive('/collection') ? 'text-amber' : ''}`}>Store</li>
                             <div className={`w-0 group-hover:w-[100px] mx-auto h-[2px] duration-300 group-hover:bg-fourth ${isActive('/products') || isActive('/collection') ? 'w-full bg-amber' : 'bg-black '}`}/>
                         </Link>

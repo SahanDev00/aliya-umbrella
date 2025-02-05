@@ -20,30 +20,7 @@ const Reviews = () => {
             img: 'https://media.wired.com/photos/59323d6c58b0d64bb35d0691/master/w_1600%2Cc_limit/Umbrella-Outside.jpg',
             review: '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat"'
         },
-        {
-            img: 'https://t4.ftcdn.net/jpg/02/01/95/07/360_F_201950785_n6wkfVyKEVPZwmK16l8pGx7QxVRuoXzS.jpg',
-            review: '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat"'
-        },
-        {
-            img: 'https://cdn.eyeem.com/thumb/194f5635d858e69cd12da29afda5734da45e45f3-1551366377463/w/400',
-            review: '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat"'
-        },
-        {
-            img: 'https://images.pexels.com/photos/2698879/pexels-photo-2698879.jpeg',
-            review: '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat"'
-        },
-        {
-            img: 'https://m.media-amazon.com/images/S/aplus-media-library-service-media/0dd5aa37-211d-4d20-9ff9-b031ad2a7476.__CR0,0,1200,900_PT0_SX600_V1___.jpg',
-            review: '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat"'
-        },
-        {
-            img: 'https://media.istockphoto.com/id/496798851/photo/theyre-in-it-together.jpg?s=612x612&w=0&k=20&c=Fev_tP8O3l0TyIDQG4PzkwFf3GhirEybL6uIgIbKL14=',
-            review: '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat"'
-        },
-        {
-            img: 'https://image.made-in-china.com/202f0j00nyLQVEWRAZcJ/7-Nylon-Beach-Sun-Umbrella-height-adjustable-w-tilt-UV-30-.webp',
-            review: '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat"'
-        },
+        
     ]
 
   return (

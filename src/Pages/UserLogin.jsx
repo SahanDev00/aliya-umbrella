@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Login from '../components/Account/Login'
 import SignUp from '../components/Account/SignUp'
 import { useState } from 'react'
@@ -6,6 +6,10 @@ import { useState } from 'react'
 const UserLogin = () => {
 
     const [isAlreadyCustomer, setIsAlreadyCustomer] = useState(true);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
   return (
     <div className='w-full bg-white pt-28'>
