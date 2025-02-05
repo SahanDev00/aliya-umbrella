@@ -61,7 +61,7 @@ const Navbar = () => {
 
                 {/* icons */}
                 <div className='flex gap-3 pr-4 text-black'>
-                    <IoSearch onClick={toggleSearchbar} className='size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer'/>
+                    <IoSearch onClick={toggleSearchbar} className={`size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer ${search ? 'text-amber' : ''}`}/>
                     <Link to='/account'>
                         <LuUser className={`size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer ${isActive('/account') ? 'text-amber' : ''}`}/>
                     </Link>
