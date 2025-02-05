@@ -1,72 +1,75 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import image from '../../assets/item3.png'
+import ProductView from './ProductView';
 
 const AllProducts = () => {
 
     const [isGridFive, setIsGridFive] = useState(true);
+    const [isViewOpen, setIsviewOpen] = useState(false);
+    const [product, setProduct] = useState();
 
     const items = [
         {
             id: 1,
             name: 'Item Sample Name 1',
             price: 1200,
-            desciption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
             image: image
         },
         {
-            id: 1,
+            id: 2,
             name: 'Item Sample Name 1',
             price: 1200,
-            desciption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
             image: image
         },
         {
-            id: 1,
+            id: 3,
             name: 'Item Sample Name 1',
             price: 1200,
-            desciption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
             image: image
         },
         {
-            id: 1,
+            id: 4,
             name: 'Item Sample Name 1',
             price: 1200,
-            desciption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
             image: image
         },
         {
-            id: 1,
+            id: 5,
             name: 'Item Sample Name 1',
             price: 1200,
-            desciption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
             image: image
         },
         {
-            id: 1,
+            id: 6,
             name: 'Item Sample Name 1',
             price: 1200,
-            desciption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
             image: image
         },
         {
-            id: 1,
+            id: 7,
             name: 'Item Sample Name 1',
             price: 1200,
-            desciption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
             image: image
         },
         {
-            id: 1,
+            id: 8,
             name: 'Item Sample Name 1',
             price: 1200,
-            desciption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
             image: image
         },
     ]
 
   return (
-    <div className='w-full min-h-screen bg-white'>
+    <div className='w-full min-h-screen bg-white relative'>
         <div className='w-[80%] mx-auto pt-28'>
             <div className='flex justify-between w-full items-center'>
                 <p className='text-black font-semibold font-karla'>
@@ -97,11 +100,14 @@ const AllProducts = () => {
                         <img src={item.image} className={`w-[90%] mx-auto object-contain duration-200 ${isGridFive ? 'h-[200px]' : 'h-[260px]'}`} alt="" />
                         <h1 className='text-center py-2 font-semibold font-poppins'>{item.name}</h1>
                         <p className='text-center pb-2 font-roboto'>Rs. {item.price}</p>
-                        <button className='border border-fourth hover:bg-fourth w-[100px] mx-auto text-amber hover:text-white font-karla'>View</button>
+                        <button className='border border-fourth hover:bg-fourth w-[100px] mx-auto text-amber hover:text-white font-karla' onClick={() => {setIsviewOpen(true); setProduct(item);}}>View</button>
                     </div>
                 ))}
             </div>
         </div>
+        {isViewOpen && (
+            <ProductView product={product} onClose={() => setIsviewOpen(false)}/>
+        )}
     </div>
   )
 }

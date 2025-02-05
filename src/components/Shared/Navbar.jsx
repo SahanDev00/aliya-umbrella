@@ -39,7 +39,7 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className='group'>
-                            <Link to='/products'>
+                            <Link to='/collection'>
                                 <li className={`cursor-pointer hover:text-amber ${isActive('/products') || isActive('/collection') ? 'text-amber' : ''}`}>Store</li>
                                 <div className={`w-0 group-hover:w-full h-[2px] duration-300 group-hover:bg-fourth ${isActive('/products') || isActive('/collection') ? 'w-full bg-amber' : 'bg-black '}`}/>
                             </Link>
@@ -62,8 +62,12 @@ const Navbar = () => {
                 {/* icons */}
                 <div className='flex gap-3 pr-4 text-black'>
                     <IoSearch onClick={toggleSearchbar} className='size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer'/>
-                    <LuUser  className='size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer'/>
-                    <GrCart className='size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer'/>
+                    <Link to='/account'>
+                        <LuUser className={`size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer ${isActive('/account') ? 'text-amber' : ''}`}/>
+                    </Link>
+                    <Link to='/cart'>
+                        <GrCart className='size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer'/>
+                    </Link>
                         {navbar ? 
                             <IoClose onClick={toggleNavbar} className='size-6 sm:hidden duration-300 hover:text-fourth cursor-pointer' />
                                 :
@@ -81,7 +85,7 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className='group'>
-                        <Link to='/products'>
+                        <Link to='/collection'>
                             <li className={`cursor-pointer hover:text-amber ${isActive('/products') || isActive('/collection') ? 'text-amber' : ''}`}>Store</li>
                             <div className={`w-0 group-hover:w-[100px] mx-auto h-[2px] duration-300 group-hover:bg-fourth ${isActive('/products') || isActive('/collection') ? 'w-full bg-amber' : 'bg-black '}`}/>
                         </Link>
@@ -104,9 +108,9 @@ const Navbar = () => {
 
         {/* searchbar */}
         {search && (
-            <div className='fixed z-50 flex items-center bg-white/40  w-[95%] md:w-[90%] h-[50px] rounded-2xl lg:w-3/4 xl:w-3/5 shadow-md mx-auto right-0 left-0 top-[12%] translate-y-4 transform float-up'>
-                <input type="text" placeholder='Search an item...' className='w-[90%] h-full rounded-l-2xl pl-4 border-r-0 border-2 bg-white/60 text-black' />
-                <button className='border-2 h-full w-[10%] rounded-r-2xl bg-third/60 hover:bg-amber duration-200 hover:text-white hover:border-black'>Search</button>
+            <div className='fixed z-50 flex items-center bg-white/40 w-[85%] md:w-[90%] lg:w-3/4 xl:w-3/5 h-[50px] rounded-2xl  shadow-md mx-auto right-0 left-0 mt-28 translate-y-4 transform float-up'>
+                <input type="text" placeholder='Search an item...' className='w-[80%] md:w-[90%] h-full rounded-l-2xl pl-4 border-r-0 border-2 bg-white/60 text-black' />
+                <button className='border-2 h-full w-[20%] md:w-[10%] rounded-r-2xl bg-third/60 hover:bg-amber duration-200 hover:text-white hover:border-black'>Search</button>
             </div>
         )}
     </div>

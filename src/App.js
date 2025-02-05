@@ -6,6 +6,9 @@ import Products from './Pages/Products';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Collection from './components/ProductsPage/Collection';
+import Profile from './Pages/Profile';
+import CartPage from './Pages/CartPage';
+import UserLogin from './Pages/UserLogin';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/contact" element={<Contact/>} />
           <Route path='/collection' element={<Collection/>} />
+          <Route path='/account' element={<Profile/>} />
+          <Route path='/cart' element={<CartPage/>} />
+          <Route path='/sign-up' element={<UserLogin/>} />
         </Routes>
         <Footer/>
       </Router>
