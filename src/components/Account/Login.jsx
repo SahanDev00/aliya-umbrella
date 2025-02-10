@@ -3,7 +3,7 @@ import React from 'react'
 const Login = ({onSignUp}) => {
   return (
     <div className="w-full flex flex-col items-center justify-center py-10">
-        <div className="bg-white w-full max-w-md p-6 rounded-lg shadow-md">
+        <div className="bg-third/60 w-full max-w-md p-6 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold text-center text-black mb-4 font-roboto">
             For Existing Customers
             </h2>

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import image from '../../assets/item3.png'
+import axios from 'axios';
 import ProductView from './ProductView';
 
 const AllProducts = () => {
@@ -8,65 +8,50 @@ const AllProducts = () => {
     const [isGridFive, setIsGridFive] = useState(true);
     const [isViewOpen, setIsviewOpen] = useState(false);
     const [product, setProduct] = useState();
+    const [items, setItems] = useState([]);
+    const [productImages, setProductImages] = useState({}); // Store images by item IDs
 
-    const items = [
-        {
-            id: 1,
-            name: 'Item Sample Name 1',
-            price: 1200,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
-            image: image
-        },
-        {
-            id: 2,
-            name: 'Item Sample Name 1',
-            price: 1200,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
-            image: image
-        },
-        {
-            id: 3,
-            name: 'Item Sample Name 1',
-            price: 1200,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
-            image: image
-        },
-        {
-            id: 4,
-            name: 'Item Sample Name 1',
-            price: 1200,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
-            image: image
-        },
-        {
-            id: 5,
-            name: 'Item Sample Name 1',
-            price: 1200,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
-            image: image
-        },
-        {
-            id: 6,
-            name: 'Item Sample Name 1',
-            price: 1200,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
-            image: image
-        },
-        {
-            id: 7,
-            name: 'Item Sample Name 1',
-            price: 1200,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
-            image: image
-        },
-        {
-            id: 8,
-            name: 'Item Sample Name 1',
-            price: 1200,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat animi ab accusantium architecto soluta ex,lectus similique!',
-            image: image
-        },
-    ]
+    useEffect(() => {
+        const fetchItems = async () => {
+            try {
+                const apiKey = process.env.REACT_APP_API_KEY;
+                const response = await axios.get('https://adminaliyaumbrella.worldpos.biz/Api/Item', {
+                    headers: { 'APIKey': apiKey },
+                });
+
+                setItems(response.data.data || []); // ✅ Ensures it's always an array
+            } catch (err) {
+                setItems([]); // ✅ Avoids undefined state
+            }
+        };
+        fetchItems();
+    }, []);
+
+    const fetchImageData = async (itemID) => {
+        try {
+            const apiKey = process.env.REACT_APP_API_KEY;
+            const response = await fetch(`https://adminaliyaumbrella.worldpos.biz/Api/ImageData/${itemID}`, {
+            headers: {
+                'APIKey': apiKey,
+            },
+            });
+            const data = await response.json();
+
+            if (data.success && data.data.length > 0) {
+                setProductImages(prevImages => ({
+                    ...prevImages,
+                    [itemID]: `https://adminaliyaumbrella.worldpos.biz/Uploads/${data.data[0].imageID}.png`
+                }));
+            }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
+        useEffect(() => {
+            items.forEach(item => {
+                fetchImageData(item.itemID);
+            });
+      },[items])
 
   return (
     <div className='w-full min-h-screen bg-white relative'>
@@ -95,14 +80,24 @@ const AllProducts = () => {
             
             {/* all items */}
             <div className={`w-full grid gap-4 mt-10 duration-200 pb-10 sm:grid-cols-2 md:grid-cols-3 ${isGridFive ? ' lg:grid-cols-4 xl:grid-cols-5' : 'lg:grid-cols-3 xl:grid-cols-4'}`}>
-                {items.map((item) => (
-                    <div key={item.id} className={`w-full p-2 flex flex-col items-center shadow-md md:shadow-none hover:shadow-xl duration-200 ${isGridFive ? 'h-[320px]' : 'h-[400px]'}`}>
-                        <img src={item.image} className={`w-[90%] mx-auto object-contain duration-200 ${isGridFive ? 'h-[200px]' : 'h-[260px]'}`} alt="" />
-                        <h1 className='text-center py-2 font-semibold font-poppins'>{item.name}</h1>
-                        <p className='text-center pb-2 font-roboto'>Rs. {item.price}</p>
-                        <button className='border border-fourth hover:bg-fourth w-[100px] mx-auto text-amber hover:text-white font-karla' onClick={() => {setIsviewOpen(true); setProduct(item);}}>View</button>
+                {items.length > 0 ? (
+                    items.map((item) => (
+                        <div key={item.id} className={`w-full relative p-2 flex flex-col items-center shadow-md md:shadow-none hover:shadow-xl duration-200 ${isGridFive ? 'h-[320px]' : 'h-[400px]'}`}>
+                            <img src={productImages[item.itemID]} className={`w-[90%] mx-auto object-contain duration-200 ${isGridFive ? 'h-[200px]' : 'h-[260px]'}`} alt="" />
+                            <h1 className="text-center py-2 font-semibold font-poppins">{item.itemName}</h1>
+                            <p className="text-center pb-2 font-roboto">Rs. {item.retailPrice}</p>
+                            {item.stockAvailable === 'A' ? (
+                                <button className="border border-fourth hover:bg-fourth w-[100px] mx-auto text-amber hover:text-white font-karla" onClick={() => { setIsviewOpen(true); setProduct(item); }}>View</button>
+                            ) : (
+                                <button className="border border-red hover:bg-red w-[100px] mx-auto text-red hover:text-white font-karla" onClick={() => { setIsviewOpen(true); setProduct(item); }}>Sold Out</button>
+                            )}
+                        </div>
+                    ))
+                ) : (
+                    <div className="w-full col-span-full flex justify-center items-center py-10">
+                        <p className="text-black/70 text-lg font-semibold font-karla">No items available yet. Check back later!</p>
                     </div>
-                ))}
+                )}
             </div>
         </div>
         {isViewOpen && (
