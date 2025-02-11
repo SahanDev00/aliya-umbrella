@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { IoIosClose } from 'react-icons/io'
+import { useCart } from '../Cart/CartContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductView = ({ product, onClose }) => {
 
   const [images, setImages] = useState([]);
+  const { addToCart } = useCart();
   const [mainImage, setMainImage] = useState(''); // State for main image
 
   useEffect(() => {
@@ -32,6 +36,20 @@ const ProductView = ({ product, onClose }) => {
 
     fetchImageData()
   }, [product.itemID]);
+
+
+  const handleAddToCart = (product) => {
+    addToCart({
+      ...product,
+      quantity: 1,
+    });
+    toast.success(product.itemName + ' Added To The Cart!', {
+      toastId: 1,
+      position: "top-right",
+      autoClose: 2000,
+    });
+  };
+
   
 
   return (
@@ -70,7 +88,7 @@ const ProductView = ({ product, onClose }) => {
             <p className='text-black/80 w-[90%] mx-auto font-poppins text-sm sm:text-base'>{product.itemDescription}</p>
             <p className='text-lg text-amber font-roboto sm:text-xl'>Rs. {product.retailPrice}</p>
             {product.stockAvailable === 'A' ? (
-              <button className='px-4 py-2 bg-amber/80 hover:bg-amber text-white rounded-md transition'>
+              <button onClick={() => handleAddToCart(product)} className='px-4 py-2 bg-amber/80 hover:bg-amber text-white rounded-md transition'>
                 Add to Cart
               </button>
             ) : (

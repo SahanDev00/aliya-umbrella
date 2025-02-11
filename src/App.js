@@ -9,6 +9,9 @@ import Collection from './components/ProductsPage/Collection';
 import Profile from './Pages/Profile';
 import CartPage from './Pages/CartPage';
 import UserLogin from './Pages/UserLogin';
+import { ToastContainer } from 'react-toastify';
+import MyOrders from './components/Cart/MyOrders';
+import ProductsPage from './components/ProductsPage/ProductsPage';
 
 function App() {
   return (
@@ -24,9 +27,12 @@ function App() {
           <Route path='/account' element={<Profile/>} />
           <Route path='/cart' element={<CartPage/>} />
           <Route path='/sign-up' element={<UserLogin/>} />
+          <Route path='/my-orders' element={<MyOrders/>} />
+          <Route path="/products/:categoryName/:subCategoryID" element={<ProductsPage />} />
         </Routes>
         <Footer/>
       </Router>
+      <ToastContainer/>
     </div>
   );
 }

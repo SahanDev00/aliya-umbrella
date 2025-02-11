@@ -3,13 +3,15 @@ import logo from '../../assets/bigLogo.png'
 import { LuUser } from 'react-icons/lu'
 import { IoClose, IoMenu, IoSearch } from 'react-icons/io5'
 import { GrCart } from 'react-icons/gr'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie';
 
 const Navbar = () => {
 
     const [navbar, setNavbar] = useState(false);
     const [search, setSearch] = useState(false);
     const location = useLocation();
+    const Navigate = useNavigate()
 
     const toggleNavbar = () => {
         setNavbar(!navbar);
@@ -22,6 +24,20 @@ const Navbar = () => {
     const isActive = (path) => {
         return location.pathname === path;
       };
+
+    // Check if the user is logged in by looking for customerDetails in cookies or sessionStorage
+    const isLoggedIn = () => {
+        const customerDetails = Cookies.get('customerId') || sessionStorage.getItem('customerId');
+        return !!customerDetails;
+    };
+  
+    const handleProfileClick = () => {
+        if (isLoggedIn()) {
+            Navigate('/account');
+        } else {
+            Navigate('/sign-up');
+        }
+    };
 
   return (
     <div className='w-screen'>
@@ -62,11 +78,9 @@ const Navbar = () => {
                 {/* icons */}
                 <div className='flex gap-3 pr-4 text-black'>
                     <IoSearch onClick={toggleSearchbar} className={`size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer ${search ? 'text-amber' : ''}`}/>
-                    <Link to='/account'>
-                        <LuUser className={`size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer ${isActive('/account') ? 'text-amber' : ''}`}/>
-                    </Link>
+                    <LuUser onClick={handleProfileClick} className={`size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer ${isActive('/account') ? 'text-amber' : ''}`}/>
                     <Link to='/cart'>
-                        <GrCart className='size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer'/>
+                        <GrCart className={`size-5 md:size-6 duration-300 hover:text-fourth cursor-pointer ${isActive('/cart') ? 'text-amber' : ''}`}/>
                     </Link>
                         {navbar ? 
                             <IoClose onClick={toggleNavbar} className='size-6 sm:hidden duration-300 hover:text-fourth cursor-pointer' />

@@ -97,7 +97,12 @@ const SignUp = ({onLogin}) => {
         });
       
         const result = await response.json();
-        console.log("Server Response:", result);
+
+        if(!result.success) {
+            toast.error('Validation error!', {
+              position: "top-right",
+            });
+        }
       
         if (response.ok) {
           if (result.success) {
@@ -126,7 +131,7 @@ const SignUp = ({onLogin}) => {
               }, 2000);
             }
           } else {
-            toast.error('Validation error!', {
+            toast.error('Validation error!', result.errors, {
               position: "top-right",
             });
             console.error('Error:', result);
@@ -165,7 +170,8 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">Salutation</label>
               <input
-              name='salutation'
+                required
+                name='salutation'
                 value={formData.salutation}
                 onChange={handleChange}
                 type="text"
@@ -177,6 +183,7 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">First Name</label>
               <input
+                required
                 name='firstName'
                 value={formData.firstName}
                 onChange={handleChange}
@@ -192,6 +199,7 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">Last Name</label>
               <input
+                required
                 name='lastName'
                 value={formData.lastName}
                 onChange={handleChange}
@@ -205,6 +213,7 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">Email</label>
               <input
+                required
                 name='email'
                 value={formData.email}
                 onChange={handleChange}
@@ -220,6 +229,7 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">Address Line 1</label>
               <input
+                required
                 name='addressLine1'
                 value={formData.addressLine1}
                 onChange={handleChange}
@@ -233,6 +243,7 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">Address Line 2</label>
               <input
+                required
                 name='addressLine2'
                 value={formData.addressLine2}
                 onChange={handleChange}
@@ -248,6 +259,7 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">City</label>
               <input
+                required
                 name='city'
                 value={formData.city}
                 onChange={handleChange}
@@ -261,6 +273,7 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">Mobile Number</label>
               <input
+                required
                 name='mobile'
                 value={formData.mobile}
                 onChange={handleChange}
@@ -276,6 +289,7 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">Country</label>
               <select
+                required
                 id="country"
                 name="country"
                 value={formData.country}
@@ -284,7 +298,7 @@ const SignUp = ({onLogin}) => {
               >
                 {countries && countries.length > 0 ? (
                   countries.map((country) => (
-                    <option key={country.countryCode} value={country.countryCode}>
+                    <option key={country.countryCode} value={country.countryName}>
                       {country.countryName}
                     </option>
                   ))
@@ -298,6 +312,7 @@ const SignUp = ({onLogin}) => {
             <div>
               <label className="block text-black font-karla">Postal Code</label>
               <input
+                required
                 name='postalCode'
                 value={formData.postalCode}
                 onChange={handleChange}
@@ -312,6 +327,7 @@ const SignUp = ({onLogin}) => {
           <div>
             <label className="block text-black font-karla">Password</label>
             <input
+              required
               name='password'
               value={formData.password}
               onChange={handleChange}
@@ -325,6 +341,7 @@ const SignUp = ({onLogin}) => {
           <div>
             <label className="block text-black font-karla">Confirm Password</label>
             <input
+              required
               name='confirmPassword'
               value={formData.confirmPassword}
               onChange={handleChange}
@@ -335,12 +352,12 @@ const SignUp = ({onLogin}) => {
           </div>
 
           <label className="flex items-center space-x-2 text-black font-karla">
-              <input type="checkbox" onClick={() => setRememberMe(!rememberMe)} className="accent-fourth" />
+              <input type="checkbox" checked={rememberMe} onClick={() => setRememberMe(!rememberMe)} className="accent-fourth" />
               <span>Remember Me</span>
           </label>
 
           {/* SignUp Button */}
-          <button onClick={handleSubmit} className="w-full bg-fourth text-white py-2 rounded-md hover:bg-amber font-semibold">
+          <button type='submit' onClick={handleSubmit} className="w-full bg-fourth text-white py-2 rounded-md hover:bg-amber font-semibold">
             Sign Up
           </button>
         </form>

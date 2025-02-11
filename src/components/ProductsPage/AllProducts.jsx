@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import { FaAngleDown } from "react-icons/fa6";
 import ProductView from './ProductView';
 
 const AllProducts = () => {
 
     const [isGridFive, setIsGridFive] = useState(true);
     const [isViewOpen, setIsviewOpen] = useState(false);
+    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
     const [product, setProduct] = useState();
     const [items, setItems] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [subCategories, setSubCategories] = useState({});
+    const [collapsedSections, setCollapsedSections] = useState({});
     const [productImages, setProductImages] = useState({}); // Store images by item IDs
 
     useEffect(() => {
@@ -26,6 +31,60 @@ const AllProducts = () => {
         };
         fetchItems();
     }, []);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const apiKey = process.env.REACT_APP_API_KEY;
+                const response = await axios.get('https://adminaliyaumbrella.worldpos.biz/Api/CategoryMain', {
+                    headers: { 'APIKey': apiKey },
+                });
+
+                setCategories(response.data.data || []); // ✅ Ensures it's always an array
+            } catch (err) {
+                setCategories([]); // ✅ Avoids undefined state
+            }
+        };
+        fetchCategories();
+    }, []);
+
+    const toggleCollapse = (category) => {
+        setCollapsedSections(prev => {
+          const newSections = { ...prev };
+          for (const key in newSections) {
+            if (key !== category) {
+              newSections[key] = false;
+            }
+          }
+          newSections[category] = !newSections[category];
+          return newSections;
+        });
+    
+        if (!subCategories[category]) {
+          // Fetch subcategories only if they are not already loaded
+          const apiKey = process.env.REACT_APP_API_KEY;
+          const url = `https://adminaliyaumbrella.worldpos.biz/API/CategorySub?CategoryMainID=${categories.find(cat => cat.categoryMainName === category)?.categoryMainID}`;
+      
+          fetch(url, {
+            method: 'GET',
+            headers: {
+              'APIKey': apiKey,
+            },
+          })
+          .then(response => response.json())
+          .then(result => {
+            if (result.success && Array.isArray(result.data)) {
+              setSubCategories(prev => ({ ...prev, [category]: result.data }));
+              console.log(subCategories)
+            } else {
+              throw new Error('Unexpected response format');
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching subcategories:', error);
+          });
+        }
+    }
 
     const fetchImageData = async (itemID) => {
         try {
@@ -52,6 +111,30 @@ const AllProducts = () => {
                 fetchImageData(item.itemID);
             });
       },[items])
+
+      const handleSubCategoryClick = (subCategory) => {
+    
+        const apiKey = process.env.REACT_APP_API_KEY;
+        const url = `https://senexadmin.worldpos.biz/Api/Item?CategorySubID=${subCategory.categorySubID}`;
+      
+        fetch(url, {
+          method: 'GET',
+          headers: {
+            'APIKey': apiKey,
+          },
+        })
+        .then(response => response.json())
+        .then(result => {
+          if (result.success && Array.isArray(result.data)) {
+            setItems(result.data);
+          } else {
+            throw new Error('Unexpected response format');
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching items:', error);
+        })
+      };
 
   return (
     <div className='w-full min-h-screen bg-white relative'>
@@ -100,6 +183,54 @@ const AllProducts = () => {
                 )}
             </div>
         </div>
+
+        <div className={`fixed left-0 top-0 flex h-screen max-h-screen overflow-hidden p-2 z-50 border bg-amber duration-300 ${isFiltersOpen ? 'w-[350px] md:w-[400px]' : 'w-[10px] md:w-[30px]' }`}>
+            <div className={`${isFiltersOpen ? 'w-[90%]' : 'w-0 hidden'}`}>
+                <div className='w-full p-5'>
+                    <h1 className='text-white text-2xl uppercase font-roboto'>Filter and Search</h1>
+                    <div className='w-full h-full'>
+                        {categories.map((category, index) => (
+                            <div key={index} className="py-2 pl-4">
+                                {/* Main Category */}
+                                <div 
+                                    className="flex items-center justify-between text-white font-karla cursor-pointer" 
+                                    onClick={() => toggleCollapse(category.categoryMainName)}
+                                >
+                                    <p>{category.categoryMainName}</p>
+                                    <FaAngleDown 
+                                        className={`transition-transform duration-300 ${
+                                            collapsedSections[category.categoryMainName] ? "rotate-180" : "rotate-0"
+                                        }`}
+                                    />
+                                </div>
+
+                                {/* Subcategories (shown only when collapsedSections[category.categoryMainName] is true) */}
+                                {collapsedSections[category.categoryMainName] && (
+                                    <div className="pl-6 mt-2">
+                                        {subCategories[category.categoryMainName]?.map((subCategory, subIndex) => (
+                                            <Link 
+                                                to={`/products/${category.categoryMainID}/${subCategory.categorySubID}`}
+                                                onClick={(event) => handleSubCategoryClick(event, subCategory)}
+                                                key={`${index}-${subIndex}`}>
+                                                <div key={subIndex} className="py-1 text-white font-karla text-sm">
+                                                    <p>{subCategory.categorySubName}</p>
+                                                    <hr />
+                                                </div>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className='w-[10%] h-full flex items-center justify-center'>
+                <h1 onClick={() => setIsFiltersOpen(!isFiltersOpen)} className='text-white -rotate-90 my-auto text-center font-mono cursor-pointer text-sm'>Filters</h1>
+            </div>
+        </div>
+
+        {/*product view */}
         {isViewOpen && (
             <ProductView product={product} onClose={() => setIsviewOpen(false)}/>
         )}
@@ -107,4 +238,4 @@ const AllProducts = () => {
   )
 }
 
-export default AllProducts
+export default AllProducts;
