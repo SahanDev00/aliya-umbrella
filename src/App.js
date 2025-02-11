@@ -29,6 +29,7 @@ function App() {
           <Route path='/sign-up' element={<UserLogin/>} />
           <Route path='/my-orders' element={<MyOrders/>} />
           <Route path="/products/:categoryName/:subCategoryID" element={<ProductsPage />} />
+          <Route path="/products/:searchQuery" element={<ProductsPage />} />
         </Routes>
         <Footer/>
       </Router>

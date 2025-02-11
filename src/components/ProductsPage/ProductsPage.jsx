@@ -4,12 +4,41 @@ import axios from 'axios';
 import ProductView from './ProductView';
 
 const ProductsPage = () => {
-    const { categoryName, subCategoryID } = useParams();
+    const { categoryName, subCategoryID, searchQuery } = useParams();
     const [isGridFive, setIsGridFive] = useState(true);
     const [isViewOpen, setIsviewOpen] = useState(false);
     const [items, setItems] = useState([]);
     const [productImages, setProductImages] = useState({});
     const [product, setProduct] = useState();
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try { 
+                const apiKey = process.env.REACT_APP_API_KEY;
+                const response = await fetch(`https://adminaliyaumbrella.worldpos.biz/Api/Item?KeyW=${searchQuery}`, {
+                    method: 'GET',
+                    headers: {
+                        'APIKey': apiKey,
+                    },
+                });
+                
+                const data = await response.json();
+    
+                if (data.success && data.data.length > 0) {
+                    setItems(data.data);
+                   
+                } else {
+                    setItems([]);
+                    window.location.reload();
+                }
+            } catch (err) {
+                setItems([]);
+            }
+        };
+    
+        fetchProducts(); // ✅ Calling the function here
+    }, [searchQuery]); // Re-run effect when query changes
+    
 
     useEffect(() => {
         window.scrollTo(0, 0);

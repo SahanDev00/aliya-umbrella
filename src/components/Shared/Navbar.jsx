@@ -10,8 +10,15 @@ const Navbar = () => {
 
     const [navbar, setNavbar] = useState(false);
     const [search, setSearch] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
     const location = useLocation();
     const Navigate = useNavigate()
+
+    const handleSearch = () => {
+        if (searchQuery.trim()) {
+            Navigate(`/products/${searchQuery.trim()}`);
+        }
+    };
 
     const toggleNavbar = () => {
         setNavbar(!navbar);
@@ -120,11 +127,23 @@ const Navbar = () => {
             </div>
         </div>
 
-        {/* searchbar */}
+        {/* Search Bar */}
         {search && (
-            <div className='fixed z-50 flex items-center bg-white/40 w-[85%] md:w-[90%] lg:w-3/4 xl:w-3/5 h-[50px] rounded-2xl  shadow-md mx-auto right-0 left-0 mt-28 translate-y-4 transform float-up'>
-                <input type="text" placeholder='Search an item...' className='w-[80%] md:w-[90%] h-full rounded-l-2xl pl-4 border-r-0 border-2 bg-white/60 text-black' />
-                <button className='border-2 h-full w-[20%] md:w-[10%] rounded-r-2xl bg-third/60 hover:bg-amber duration-200 hover:text-white hover:border-black'>Search</button>
+            <div className='fixed z-50 flex items-center bg-white/40 w-[85%] md:w-[90%] lg:w-3/4 xl:w-3/5 h-[50px] rounded-2xl shadow-md mx-auto right-0 left-0 mt-28 translate-y-4 transform float-up'>
+                <input
+                    type="text"
+                    placeholder='Search an item...'
+                    className='w-[80%] md:w-[90%] h-full rounded-l-2xl pl-4 border-r-0 border-2 bg-white/60 text-black'
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSearch()} // Handle Enter key press
+                />
+                <button
+                    className='border-2 h-full w-[20%] md:w-[10%] rounded-r-2xl bg-third/60 hover:bg-amber duration-200 hover:text-white hover:border-black'
+                    onClick={handleSearch}
+                >
+                    Search
+                </button>
             </div>
         )}
     </div>
