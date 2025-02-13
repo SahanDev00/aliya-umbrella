@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import logo from '../../assets/bigLogo.png'
 import { LuUser } from 'react-icons/lu'
 import { IoClose, IoMenu, IoSearch } from 'react-icons/io5'
+import { FaWhatsapp } from "react-icons/fa";
 import { GrCart } from 'react-icons/gr'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie';
@@ -125,6 +126,12 @@ const Navbar = () => {
                     </div>
                 </ul>
             </div>
+        </div>
+
+        <div className='fixed border border-green bg-third w-[50px] h-[50px] p-1 cursor-pointer flex items-center justify-center rounded-full bottom-3 right-3 z-50 text-green'>
+            <a href="https://wa.me/94771222666">
+                <FaWhatsapp className='size-7 text-green'/>
+            </a>
         </div>
 
         {/* Search Bar */}

@@ -27,13 +27,13 @@ const Footer = () => {
         <div className='mb-8 md:mb-0'>
           <h2 className='text-xl font-bold text-gray-700 mb-4 font-roboto'>Contact Us</h2>
           <p className='text-black/80 mb-1'>
-            Email: example@gmail.com
+            <span className='text-black'>Email:</span> example@gmail.com
           </p>
           <p className='text-black/80'>
-            Address: Sri Lanka
+            <span className='text-black'>Address:</span> No.259/40, Bandaranayakepura, Kalapaluwawa, Rajagiriya.
           </p>
           <p className='text-black/80 mb-1'>
-            Telephone: 0712345675
+            <span className='text-black'>Telephone:</span> 0771-222-666 
           </p>  
         </div>
         
@@ -43,7 +43,7 @@ const Footer = () => {
           <div className='flex space-x-4'>
             <a href='/' className='text-black/80'><FaFacebookF /></a>
             <a href='/' className='text-black/80'><FaTwitter /></a>
-            <a href='/' className='text-black/80'><FaInstagram /></a>
+            <a target='_blank' rel='noreferrer' href='https://www.instagram.com/aliya_umbrella/' className='text-black/80'><FaInstagram /></a>
             <a href='/' className='text-black/80'><FaLinkedinIn /></a>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { FaHandHoldingHeart } from 'react-icons/fa'
 
 const Reviews = () => {
 
+    /* 
     const images = [
         {
             img: 'https://cdn.pixabay.com/photo/2017/04/28/13/34/young-woman-2268348_960_720.jpg',
@@ -21,12 +22,13 @@ const Reviews = () => {
             review: '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repellendus earum tenetur magni repellat"'
         },
         
-    ]
+    ]*/
 
   return (
-    <div className='w-full h-full bg-white py-5 mt-10'>
-        <h1 className='text-4xl text-center uppercase font-thin mt-5 font-karla'>See what our customers say about us!</h1>
+    <div className='w-full h-full bg-white py-10 mt-10'>
+        <h1 className='text-4xl text-center uppercase font-thin font-karla'>Our social Media</h1>
         <div className='w-[90px] h-[1px] mx-auto bg-black mt-2 mb-6'/>
+        {/*
         <div className='w-[95%] sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto h-full grid grid-cols-1 sm:grid-cols-2 mt-5'>
             <div className='w-full h-full sm:flex flex-col items-center justify-center hidden'>
                 <FaHandHoldingHeart className='size-20 text-amber' />
@@ -47,14 +49,15 @@ const Reviews = () => {
                     ))}
                 </div>
             </div>
-            <div className='w-full h-full flex flex-col items-center justify-center sm:hidden mt-5'>
+        </div>
+             */}
+            <div className='w-full h-full flex flex-col items-center justify-center mt-5'>
                 <FaHandHoldingHeart className='size-16 text-amber' />
                 <h1 className='my-4 text-2xl font-bold font-overpass'>FOLLOW US</h1>
-                <button className='my-1 px-3 md:px-5 py-1 border font-roboto hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Instagram <span className='font-semibold'>@example_instagram</span></button>
+                <button className='my-1 px-3 md:px-5 py-1 border font-roboto hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Instagram <span className='font-semibold'><a href="https://www.instagram.com/aliya_umbrella/">@aliya_umbrella</a></span></button>
                 <button className='my-1 px-3 md:px-5 py-1 border font-roboto hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on Facebook <span className='font-semibold'>@example_facebook</span></button>
                 <button className='my-1 px-3 md:px-5 py-1 border font-roboto hover:border-fourth hover:bg-third text-sm md:text-[15px] rounded-3xl hover:scale-105 duration-200'>on TikTok <span className='font-semibold'>@example_tiktok</span></button>
             </div>
-        </div>
     </div>
   )
 }
