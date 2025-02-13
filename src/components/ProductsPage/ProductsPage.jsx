@@ -26,17 +26,15 @@ const ProductsPage = () => {
     
                 if (data.success && data.data.length > 0) {
                     setItems(data.data);
-                   
                 } else {
                     setItems([]);
-                    window.location.reload();
                 }
             } catch (err) {
                 setItems([]);
             }
         };
     
-        fetchProducts(); // ✅ Calling the function here
+        fetchProducts(); // ✅ Calling the function here 
     }, [searchQuery]); // Re-run effect when query changes
     
 
