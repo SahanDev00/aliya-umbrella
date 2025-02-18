@@ -1,8 +1,10 @@
-import React from 'react'
-import pic1 from '../../assets/Hero.jpg';
+import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick';
+import axios from 'axios';
 
 const Hero = () => {
+
+  const [banner, setBanner] = useState([]);
 
   const sliderSettings = {
     dots: false,
@@ -17,11 +19,19 @@ const Hero = () => {
     fade: true, // For smooth fading effect
   };
 
-  const pictures = [
-    { src: pic1 },
-    { src: 'https://images.pexels.com/photos/573238/pexels-photo-573238.jpeg?cs=srgb&dl=pexels-bertellifotografia-573238.jpg&fm=jpg' },
-    { src: 'https://images.pexels.com/photos/268791/pexels-photo-268791.jpeg?cs=srgb&dl=pexels-pixabay-268791.jpg&fm=jpg' },
-  ];
+  useEffect(() => {
+    const fetchBanners = async () => {
+      const apiKey = process.env.REACT_APP_API_KEY;
+      const response = await axios.get("https://adminaliyaumbrella.worldpos.biz/Api/SlideBanner" , {
+        headers: {
+          'APIKey' : apiKey
+        }
+      })
+
+      setBanner(response.data.data);
+    }
+    fetchBanners();
+  })
 
   return (
     <div className='w-full h-screen flex items-center justify-center'>
@@ -29,10 +39,10 @@ const Hero = () => {
             <div className='w-full rounded-2xl h-full relative bg-black overflow-hidden'>
                 {/* Slider Component */}
                 <Slider {...sliderSettings} className='h-full w-full'>
-                  {pictures.map((image, index) => (
+                  {banner.map((image, index) => (
                     <div key={index} className='w-full h-full'>
                       <img
-                        src={image.src}
+                        src={`https://adminaliyaumbrella.worldpos.biz/Uploads/${image.slideBannerID}.jpg`}
                         alt={`Slide ${index + 1}`}
                         className="w-full h-screen object-cover rounded-xl md:rounded-none md:rounded-l-xl opacity-60"
                       />

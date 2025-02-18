@@ -225,7 +225,7 @@ const AllProducts = () => {
                     </div>
                 </div>
             </div>
-            <div className='w-[10%] h-full flex items-center justify-center'>
+            <div className={`h-full flex items-center justify-center ${isFiltersOpen ? 'w-[10%]' : 'w-full'}`}>
                 <h1 onClick={() => setIsFiltersOpen(!isFiltersOpen)} className='text-white -rotate-90 my-auto text-center font-mono cursor-pointer text-sm'>Filters</h1>
             </div>
         </div>

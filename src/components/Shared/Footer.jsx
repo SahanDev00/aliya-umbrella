@@ -9,7 +9,7 @@ const Footer = () => {
         <div className='mb-8 md:mb-0 w-full md:w-[50%]'>
           <h2 className='text-xl font-bold text-gray-700 mb-4 font-roboto'>About Us</h2>
           <p className='text-black/80 md:w-[70%] font-poppins text-sm'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente pariatur recusandae esse vel repellat voluptatibus vitae voluptatum dolores deleniti ex. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga quam delectus expedita porro adipisci veniam consequuntur doloremque natus, dolor molestias!
+          Welcome to Aliya Umbrella, where innovation meets sustainability. We are a newly opened umbrella company dedicated to crafting premium, eco-friendly umbrellas that combine style, durability, and a commitment to the planet.
           </p>
         </div>
         
